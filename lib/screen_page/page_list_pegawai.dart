@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:coba/screen_page/page_bottom_navigation.dart';
 import 'package:coba/screen_page/page_edit_pegawai.dart';
+import 'package:coba/screen_page/page_login_api.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../model/model_pegawai.dart';
+import '../utils/session_manager.dart';
 
 class PageKaryawan extends StatefulWidget {
   @override
@@ -66,13 +68,33 @@ class _PageKaryawanState extends State<PageKaryawan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Data Karyawan',
+        title: Text('Data Pegawai',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+            color: Colors.white, // Ubah warna teks menjadi putih
+          ),),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Ubah warna ikon back menjadi putih
         ),
-        centerTitle: true,
+        actions: [
+          TextButton(onPressed: () {}, child: Text('Hi ... ${session.userName}')),
+          // Logout
+          IconButton(
+            onPressed: () {
+              // Clear session
+              setState(() {
+                session.clearSession();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageLoginApi()),
+                      (route) => false,
+                );
+              });
+            },
+            icon: Icon(Icons.exit_to_app),
+            tooltip: 'Logout',
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -81,7 +103,7 @@ class _PageKaryawanState extends State<PageKaryawan> {
             child: TextField(
               controller: txtCari,
               decoration: InputDecoration(
-                hintText: 'Cari karyawan...',
+                hintText: 'Cari Pegawai...',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -336,8 +358,33 @@ class _PageTambahKaryawanState extends State<PageTambahKaryawan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text('Tambah Data Karyawan'),
+        title: Text('Tambah Data Pegawai',
+          style: TextStyle(
+            color: Colors.white, // Ubah warna teks menjadi putih
+          ),),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Ubah warna ikon back menjadi putih
+        ),
+        actions: [
+          TextButton(onPressed: () {}, child: Text('Hi ... ${session.userName}')),
+          // Logout
+          IconButton(
+            onPressed: () {
+              // Clear session
+              setState(() {
+                session.clearSession();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageLoginApi()),
+                      (route) => false,
+                );
+              });
+            },
+            icon: Icon(Icons.exit_to_app),
+            tooltip: 'Logout',
+          )
+        ],
       ),
       body: Form(
         key: keyForm,

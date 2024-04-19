@@ -1,5 +1,8 @@
+import 'package:coba/screen_page/page_login_api.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../utils/session_manager.dart';
 
 class SessionLatihanManager {
   int? value;
@@ -60,13 +63,33 @@ class _PageProfileUserState extends State<PageProfileUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Profile',
+        title: Text('Profil',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+            color: Colors.white, // Ubah warna teks menjadi putih
+          ),),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Ubah warna ikon back menjadi putih
         ),
-        centerTitle: true,
+        actions: [
+          TextButton(onPressed: () {}, child: Text('Hi ... ${session.userName}')),
+          // Logout
+          IconButton(
+            onPressed: () {
+              // Clear session
+              setState(() {
+                session.clearSession();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageLoginApi()),
+                      (route) => false,
+                );
+              });
+            },
+            icon: Icon(Icons.exit_to_app),
+            tooltip: 'Logout',
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -197,8 +220,34 @@ class _PageEditProfileState extends State<PageEditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
-        centerTitle: true,
+        title: Text('Edit Profil',
+          style: TextStyle(
+            color: Colors.white, // Ubah warna teks menjadi putih
+          ),),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Ubah warna ikon back menjadi putih
+        ),
+        actions: [
+          TextButton(onPressed: () {}, child: Text('Hi ... ${session.userName}')),
+          // Logout
+          IconButton(
+            onPressed: () {
+              // Clear session
+              setState(() {
+                session.clearSession();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageLoginApi()),
+                      (route) => false,
+                );
+              });
+            },
+            icon: Icon(Icons.exit_to_app),
+            color: Colors.white, // Ubah warna ikon back menjadi putih
+            tooltip: 'Logout',
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

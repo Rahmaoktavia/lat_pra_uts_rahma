@@ -69,7 +69,7 @@ class _PageBottomNavigationBarState extends State<PageBottomNavigationBar>
             labelColor: Colors.blue,
             tabs: const [
               Tab(
-                text: "Karyawan",
+                text: "Pegawai",
                 icon: Icon(Icons.search),
               ),
               Tab(

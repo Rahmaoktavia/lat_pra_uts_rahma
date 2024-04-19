@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'package:coba/screen_page/page_login_api.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../model/model_pegawai.dart';
+import '../utils/session_manager.dart';
 
 class PageEditKaryawan extends StatefulWidget {
   final Datum data;
@@ -32,9 +34,34 @@ class _PageEditKaryawanState extends State<PageEditKaryawan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text('Edit Data Karyawan'),
-        centerTitle: true,
+        title: Text('Edit Data Pegawai',
+          style: TextStyle(
+            color: Colors.white, // Ubah warna teks menjadi putih
+          ),),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Ubah warna ikon back menjadi putih
+        ),
+        actions: [
+          TextButton(onPressed: () {}, child: Text('Hi ... ${session.userName}')),
+          // Logout
+          IconButton(
+            onPressed: () {
+              // Clear session
+              setState(() {
+                session.clearSession();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageLoginApi()),
+                      (route) => false,
+                );
+              });
+            },
+            icon: Icon(Icons.exit_to_app),
+            color: Colors.white,
+            tooltip: 'Logout',
+          )
+        ],
       ),
       body: Form(
         key: keyForm,

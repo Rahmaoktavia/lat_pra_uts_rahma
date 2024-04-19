@@ -73,7 +73,8 @@ flutter:
       - gambar/film4.jpeg
       - gambar/film5.jpeg
       - gambar/film6.jpeg
-      - gambar/
+      - gambar/logo_rahma.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

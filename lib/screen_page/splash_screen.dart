@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('gambar/pnp.png', width: 200), // Ganti dengan path yang benar
+            Image.asset('gambar/logo_rahma.jpg', width: 300), // Ganti dengan path yang benar
 
             SizedBox(height: 20),
             CircularProgressIndicator(),
