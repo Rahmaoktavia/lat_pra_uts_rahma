@@ -1,6 +1,4 @@
 import 'package:coba/Latihansatu2201091011.dart';
-import 'package:coba/screen_page/page_beranda.dart';
-import 'package:coba/screen_page/page_column.dart';
 import 'package:coba/screen_page/page_register_api.dart';
 import 'package:coba/screen_page/splash_screen.dart';
 import 'package:flutter/material.dart';

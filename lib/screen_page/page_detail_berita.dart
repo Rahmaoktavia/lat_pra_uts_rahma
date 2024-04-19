@@ -10,8 +10,16 @@ class DetailBerita extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Detail Berita"),
-        backgroundColor: Colors.green,
+        title: const Text(
+          "Detail Berita",
+          style: TextStyle(
+            color: Colors.white, // Ubah warna teks menjadi putih
+          ),
+        ),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // Ubah warna ikon back menjadi putih
+        ),
       ),
       body: ListView(
         children: [
